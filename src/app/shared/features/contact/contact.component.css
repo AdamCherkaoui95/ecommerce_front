@@ -1,0 +1,27 @@
+.card-content {
+    display: flex;
+    flex-direction: column;
+    /* Align children in a column */
+    align-items: center;
+    /* Center items horizontally */
+    justify-content: center;
+    /* Center items vertically */
+    padding: 20px;
+    /* Optional padding */
+    height: 100%;
+    /* Fill the card height */
+}
+
+.form-field {
+    width: 100%;
+    /* Full width for the form fields */
+    margin-bottom: 1rem;
+    /* Space between fields */
+}
+
+label {
+    display: block;
+    /* Make labels block elements */
+    margin-bottom: 0.5rem;
+    /* Space below labels */
+}

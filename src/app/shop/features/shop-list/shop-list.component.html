@@ -1,0 +1,39 @@
+<h1 class="text-center">Shop</h1>
+
+
+<p-dataView #dv [value]="products()">
+    <ng-template pTemplate="list" let-products>
+        @for (product of products; track product) {
+        <p-card class="block mb-2">
+            <div class="row">
+                <div class="col-4">
+                    <span class="font-medium text-secondary text-sm">category : {{ product.category }}</span>
+                    <div class="text-lg font-medium text-900 mt-2"> nom : {{ product.name }}</div>
+                    <div class="text-lg font-medium text-900 mt-2">price : {{ product.price }}</div>
+                    <div class="text-lg font-medium text-900 mt-2">description : {{ product.description }}</div>
+                </div>
+                <div class="col-4">
+                    <span class="font-medium text-secondary text-sm">QTY : {{ getQuantity(product.id)?.quantity ||
+                        0}}</span>
+                </div>
+                <ng-container *ngIf="getQuantity(product.id) as quantityInfo">
+                    <ng-container *ngIf="quantityInfo?.quantity !== undefined">
+                        <p-inputNumber [(ngModel)]="quantityInfo.quantity" [showButtons]="true"
+                            buttonLayout="horizontal" spinnerMode="horizontal" inputId="horizontal"
+                            decrementButtonClass="p-button-secondary" incrementButtonClass="p-button-secondary"
+                            incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus"
+                            (onInput)="onQuantityChange(product.id, quantityInfo.quantity)">
+                        </p-inputNumber>
+
+                    </ng-container>
+                </ng-container>
+
+            </div>
+            <ng-template pTemplate="footer">
+                <p-button label="ajouter" severity="secondary" (onClick)="addPanierDetail(product)" />
+                <p-button label="supprime" severity="danger" (onClick)="deletePanierDetail(product.id)" />
+            </ng-template>
+        </p-card>
+        }
+    </ng-template>
+</p-dataView>

@@ -1,0 +1,19 @@
+<h1 class="text-center">Contact us</h1>
+
+<p-card>
+    <div class="card-content">
+        <form #form="ngForm" (ngSubmit)="onSave('ngForm')">
+            <div class="form-field">
+                <label for="email">Email</label>
+                <input pInputText type="email" id="email" name="email" [(ngModel)]="contact.email" required>
+            </div>
+            <div class="form-field">
+                <label for="message">Message</label>
+                <textarea pInputTextarea id="message" name="message" rows="5" cols="30" maxlength="300"
+                    [(ngModel)]="contact.message" required></textarea>
+            </div>
+            <input type="submit">
+        </form>
+    </div>
+</p-card>
+<p-toast />
